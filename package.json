@@ -1,0 +1,16 @@
+{
+  "name": "bdd_ud",
+  "version": "1.0.0",
+  "description": "project for at class focusing on bdd vs pom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^13.16.1",
+    "cypress-plugin-steps": "^1.1.1"
+  }
+}
