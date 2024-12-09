@@ -1,44 +1,48 @@
 import Home from '../bdd_pages/home';
 import Result from '../bdd_pages/searchResult';
-import {createStep,generateRandomTown,sortResult} from '../helper';
+import {createStep, generateRandomTown, sortResult, createIntercept} from '../helper';
 
 class Lib {
 
-    searchInCity() {
+    searchInCity(city) {
         createStep('Zapis mesta');
-        Home.inputCity().type(generateRandomTown()).wait(1000);
+        Home.inputCity().type(city);
+        Home.inputCity().should('have.value', city);
         createStep('klik na vyhledavani');
-        Home.btnZobrazInzerat().click({timeout: 1000});
+        Home.btnZobrazInzerat().click();
     }
 
     sortResult() {
         createStep('klikni na dropdown a v dropdown na nahodny vyber');
-        Result.buttonForDropDown().select(sortResult()).wait(1000);
+        createIntercept('POST', '**/sorting=best').as('sort');
+        Result.buttonForDropDown().select(sortResult()).wait('@sort');
     }
 
-    filterOptions () {
+    filterOptions() {
         createStep('klikni na tlacitko Upravit hledani');
-        Result.btnEditSearch().click({timeout: 1000});
+        Result.btnEditSearch().click();
         createStep('klikni na Prodej');
         Result.btnProdej().click();
         createStep('klikni na Byt');
-        Result.btnByt().click().wait(1000);
+        Result.btnByt().click();
         createStep('klikni na Zobrazit');
         Result.btnZobrazit().click();
     }
-    searchAccordingData(rentBuy,townee) {
+
+    searchAccordingData(rentBuy, townee,propertyType) {
         createStep('Zvol Pronajem');
         Home.dropDownPronajemProdej().click();
         Home.dropDownPronajemProdej2(rentBuy).click();
         createStep('Zapis mesto');
-        Home.inputCity().type(townee).wait(1000);
+        Home.inputCity().type(townee);
+        Home.inputCity().should('have.value',townee);
         createStep('Zvol Byt');
-        Home.btnByt().click();
+        Home.btnProperty(propertyType).click();
         createStep('klik na vyhledavani');
-        Home.btnZobrazInzerat().click({timeout: 1000});
+        Home.btnZobrazInzerat().click();
         Result.tableFoundNemovitost().should('exist').and('be.visible');
     }
 
 }
 
-    module.exports = new Lib();
+module.exports = new Lib();

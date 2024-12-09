@@ -16,3 +16,7 @@ export function sortResult(){
     const creterium = ["Nejlepší","Nejnovější","Nejlevnější"];
     return `${creterium[Math.floor(Math.random()*creterium.length)]}`;
 }
+
+export function createIntercept(method, url){
+    return cy.intercept(method, url);
+}
