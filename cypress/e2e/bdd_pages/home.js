@@ -3,7 +3,7 @@ class Home {
     // dropDownPronajemProdej = (rentBuy) => cy.contains('[data-test="global.writeBox"]',`${rentBuy}`);
     dropDownPronajemProdej = () => cy.get('[data-test="global.writeBox"]');
     dropDownPronajemProdej2 = (rentBuy) => cy.contains('.chakra-stack',`${rentBuy}`);
-    btnProperty = (propertyType) => cy.contains('button',propertyType);
+    btnProperty = (propertyType) => cy.contains('p',propertyType);
     btnDum = () => cy.get('.css-1d1s8sc').last();
     inputCity = () => cy.get('.chakra-input').last();
     // btnAddPortfolio = () => cy.contains('.flex','Přidat portfolio');

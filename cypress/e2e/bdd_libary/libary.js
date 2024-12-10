@@ -39,7 +39,8 @@ class Lib {
         createStep('Zvol Byt');
         Home.btnProperty(propertyType).click();
         createStep('klik na vyhledavani');
-        Home.btnZobrazInzerat().click();
+        createIntercept('POST', '**/offer/count').as('search');
+        Home.btnZobrazInzerat().click().wait('@search');
         Result.tableFoundNemovitost().should('exist').and('be.visible');
     }
 

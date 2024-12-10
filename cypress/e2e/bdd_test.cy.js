@@ -24,7 +24,7 @@ describe('bdd_UlovDomov', () => {
         Lib.searchAccordingData('Pronájem','Brno', 'Byt');
     });
 
-    it.only('4.Zobraz dle zadani - pronajem, byt, Brno ', () => {
+    it.only('4.Zobraz dle zadani - pronajem, dum, Ostrava ', () => {
         Lib.searchAccordingData('Prodej','Brno','Dům');
     });
 
